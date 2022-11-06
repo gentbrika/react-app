@@ -1,0 +1,23 @@
+.create-post{
+    background: #292a31;
+    padding: 30px;
+}
+
+.caption{
+    width: 100%;
+    background-color: #3c3e44;
+    border-color: #3c3e44;
+    border-radius: 5px;
+}
+
+.caption ::placeholder{
+    color: #fff !important;
+}
+.submit{
+    justify-content: flex-end;
+}
+
+.icon{
+    cursor: pointer;
+    margin-top: 5px;
+}

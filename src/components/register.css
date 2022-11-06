@@ -1,0 +1,21 @@
+.name, .email, .password, .submit{
+    width: 100%;
+}
+
+.email, .name, .password{
+    margin-bottom: 10px !important;
+}
+
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.buttons button{
+    width: 100%;
+    margin-left: 0px !important;
+}
+
+.date{
+    width: 100%;
+}

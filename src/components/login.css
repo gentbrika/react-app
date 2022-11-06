@@ -1,0 +1,7 @@
+.email, .password, .submit{
+    width: 100%;
+}
+
+.email{
+    margin-bottom: 10px !important;
+}
