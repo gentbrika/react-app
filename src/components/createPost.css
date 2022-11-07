@@ -1,6 +1,8 @@
 .create-post{
     background: #292a31;
     padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #3b3d43;
 }
 
 .caption{

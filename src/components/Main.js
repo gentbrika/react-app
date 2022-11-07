@@ -10,8 +10,8 @@ export const Main = () => {
     return (
         <>
             <Navbar />
-            <Grid container spacing={2}>
-                <Grid xs={3} className='profile'>
+            <Grid container spacing={1}>
+                <Grid xs={4} className='profile'>
                     <Profile />
                 </Grid>
                 <Grid xs={7}>
