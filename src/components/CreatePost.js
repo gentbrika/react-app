@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import './createPost.css'
 import SendIcon from '@mui/icons-material/Send';
 
-function CreatePost() {
+function CreatePost({onPostCreate}) {
   let URL = 'http://localhost:3001/api/v1/';
   const [image, setImage] = useState('');
   const [caption, setCaption] = useState('');
@@ -20,18 +20,17 @@ function CreatePost() {
   formData.append('image', image);
   formData.append('caption', caption);
 
-  const handleSubmit = event => {
+  const createPost = event => {
     axios.post(`${URL}posts`, formData, config).then((res) => {
-      console.log(res);
+      onPostCreate()
     });
     event.preventDefault();
   };
 
-
   return (
     <>
       <div className='create-post'>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={createPost}>
           <TextField
             type='text'
             placeholder='Caption'
@@ -41,7 +40,7 @@ function CreatePost() {
           /><br />
 
           <CardActions className="submit">
-            <SendIcon className='icon' variant="outlined" type="submit" onClick={handleSubmit}/><br />
+            <SendIcon className='icon' variant="outlined" type="submit" onClick={createPost}/><br />
           </CardActions>
         </form>
       </div>
