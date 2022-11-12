@@ -6,6 +6,7 @@ import { Profile } from './Profile';
 import './main.css'
 import CreatePost from './CreatePost';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 export const Main = () => {
     let URL = 'http://localhost:3001/api/v1/';
@@ -14,8 +15,13 @@ export const Main = () => {
         const data = await axios.get(`${URL}posts`);
         setPosts(data.data.posts);
     }
+    let navigate = useNavigate();
+
 
     useEffect(() => {
+        if(!localStorage.getItem('token')){
+            navigate('/login')
+        };
         getData();
     }, []);
     

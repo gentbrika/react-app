@@ -1,0 +1,54 @@
+.post{
+    background-color: #292a31;
+    padding: 2rem 1rem;
+    color: #fff;
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.details{
+    display: flex;
+}
+
+.details img{
+    border-radius: 50%;
+    object-fit: cover;
+    width: 38px;
+    height: 38px;
+}
+
+.details .date-name{
+    margin-left: 10px;
+}
+
+.details .date-name p{
+    margin: 0px;
+}
+
+.details .date-name p:last-child{
+    font-size: 10px;
+    color: #7c7d81;
+}
+
+.bottom-part{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.css-1vm0r4s-MuiPaper-root {
+    background-color: #1f1f25 !important;
+}
+
+input.MuiInputBase-input.css-yz9k0d-MuiInputBase-input {
+    color: #fff;
+}
+
+input.MuiInputBase-input.css-yz9k0d-MuiInputBase-input::placeholder {
+    color: #fff;
+}
+
+.send-icon{
+    fill: #fff !important;
+}

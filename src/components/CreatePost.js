@@ -33,7 +33,7 @@ function CreatePost({onPostCreate}) {
         <form onSubmit={createPost}>
           <TextField
             type='text'
-            placeholder='Caption'
+            placeholder="What's on your mind?"
             className='caption'
             onChange={event => setCaption(event.target.value)}
             value={caption}
