@@ -34,7 +34,7 @@ export const Main = () => {
                 </Grid>
                 <Grid xs={7}>
                     <CreatePost onPostCreate={getData} />
-                    <Post posts={posts} />
+                    <Post posts={posts} onPostLike={getData} />
                 </Grid>
             </Grid>
         </>

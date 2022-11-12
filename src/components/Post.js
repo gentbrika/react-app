@@ -2,45 +2,26 @@ import React, { useEffect, useState } from 'react'
 import './post.css'
 import * as moment from 'moment'
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import IconButton from '@mui/material/IconButton';
 import SendIcon from '@mui/icons-material/Send';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
-function Post({ posts }) {
+function Post({ posts, onPostLike }) {
   let URL = 'http://localhost:3001/api/v1/';
   let token = localStorage.getItem('token')
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
   const [comment, setComment] = useState(posts);
-
+  const [like, setLike] = useState(true);
+  let navigate = useNavigate();
 
   useEffect(() => {
-    // console.log(posts);
-  }, [posts])
-
-  // const handleroom = (e, id) => {
-  //   // id = id + 1;
-  //   var result = [...posts]; 
-  //   let allPosts = [];
-  //   let i = 0;
-  //   // let value;
-  //   result = result.map((x) => { 
-  //     i++;
-  //     Object.assign(x, { i})
-  //     allPosts.push(x);
-  //     console.log(allPosts);
-  //   });
-  //   // setComment(result);
-  //   console.log(result);
-
-
-  //   // console.log(e.target.value);
-
-
-  // };
+  }, [])
 
   function addComment(id){
     console.log(id);
@@ -50,6 +31,18 @@ function Post({ posts }) {
     }
     axios.patch(`${URL}posts/comment`, data, config).then((res) => {});
   };
+
+  function likePost(id){
+    let data = {
+      add: like,
+      id: id,
+    }
+    setLike(!like)
+    console.log(like);
+    axios.patch(`${URL}posts/like`, data, config).then((res) => {
+      onPostLike();
+    });
+  }
 
   return (
     <>
@@ -64,11 +57,14 @@ function Post({ posts }) {
               <p>{moment(post.createdAt).format('DD.MM.YYYY')}</p>
             </div>
           </div>
-          <p>{post.caption}</p>
+          <p onClick={() => {navigate(`details/${post._id}`)}}>{post.caption}</p>
 
           <div className='bottom-part'>
             <div className='like'>
-              <ThumbUpIcon />
+              <div>
+                {like ? <ThumbUpOffAltIcon onClick={() => likePost(post._id)}/> : <ThumbUpIcon onClick={() => likePost(post._id)}/>}
+                {post.likes.length ? post.likes.length : ''}
+              </div>
             </div>
             <div className="comment">
               <Paper
