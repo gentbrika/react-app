@@ -24,6 +24,7 @@ function Login() {
         let data = { email: emailInput, password: passwordInput }
         axios.post(`${URL}auth/login`, data).then((res) => {
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('id', res.data.id);
             navigate("/")
         });
         event.preventDefault();

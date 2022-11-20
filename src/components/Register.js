@@ -33,8 +33,8 @@ function Register() {
         console.log(value);
         let data = { email: email, password: password, name: name, dob: value }
         axios.post(`${URL}auth/register`, data).then((res) => {
-            console.log(res);
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('id', res.data.id);
             navigate("/");
         });
         event.preventDefault(); 

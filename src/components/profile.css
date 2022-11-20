@@ -1,0 +1,23 @@
+.details{
+    display: flex;
+    align-items: center;
+}
+
+.details .content{
+    margin-left: 10px;
+    color: #fff;
+}
+
+.details .icon{
+    color: #fff;
+}
+
+.name{
+    color: #fff;
+    text-align: center;
+}
+
+.about{
+    color: #bebec0;
+    text-align: center;
+}

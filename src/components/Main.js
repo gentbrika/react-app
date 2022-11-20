@@ -11,10 +11,17 @@ import { useNavigate } from 'react-router-dom';
 export const Main = () => {
     let URL = 'http://localhost:3001/api/v1/';
     const [posts, setPosts] = useState()
+    const [users, setUsers] = useState()
     const getData = async () => {
         const data = await axios.get(`${URL}posts`);
         setPosts(data.data.posts);
     }
+
+    const getUsers = async () => {
+        const allUsers = await axios.get(`${URL}users`);
+        setUsers(allUsers.data.users)
+    }
+
     let navigate = useNavigate();
 
 
@@ -23,6 +30,7 @@ export const Main = () => {
             navigate('/login')
         };
         getData();
+        getUsers();
     }, []);
     
     return (
@@ -30,11 +38,11 @@ export const Main = () => {
             <Navbar />
             <Grid container spacing={1}>
                 <Grid xs={4} className='profile'>
-                    <Profile />
+                    <Profile users={users} />
                 </Grid>
                 <Grid xs={7}>
                     <CreatePost onPostCreate={getData} />
-                    <Post posts={posts} onPostLike={getData} />
+                    <Post posts={posts} onPostLike={getData}  />
                 </Grid>
             </Grid>
         </>
